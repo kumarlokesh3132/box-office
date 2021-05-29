@@ -1,9 +1,10 @@
 import React from 'react'
 import ActorCard from './ActorCard'
+import { FlexGrid } from '../Styled'
 import IMAGE_BACKUP from '../../image/not-found.png'
 
 const ActorGrid = ( {data} ) => (
-    <div>
+    <FlexGrid>
       {   
     data.map( ( {person} )=> <ActorCard 
     key={person.id}
@@ -15,7 +16,7 @@ const ActorGrid = ( {data} ) => (
     image={person.image? person.image.medium : IMAGE_BACKUP }
      />)
   }
-    </div>
+    </FlexGrid>
   )
 
 

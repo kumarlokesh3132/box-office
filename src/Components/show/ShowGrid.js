@@ -1,9 +1,10 @@
 import React from 'react'
 import ShowCard from './ShowCard'
+import { FlexGrid } from '../Styled'
 import IMAGE_BACKUP from '../../image/not-found.png'
 
 const ShowGrid = ( { data }) =>  (
-    <div>{
+    <FlexGrid>{
     
       data.map( ( {show} )=> <ShowCard 
       key={show.id}
@@ -12,7 +13,7 @@ const ShowGrid = ( { data }) =>  (
       image={show.image? show.image.medium : IMAGE_BACKUP }
       summary={show.summary} />)
     } 
-    </div>
+    </FlexGrid>
   )
 
 
