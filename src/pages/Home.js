@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
 import React,{useState} from 'react'
 import ActorGrid from '../Components/actor/ActorGrid';
+import CustomRadio from '../Components/CustomRadio';
 import MainPageLayout from '../Components/MainPageLayout'
 import ShowGrid from '../Components/show/ShowGrid';
 import { getAPI } from '../Misc/config';
 import { useLastQuery } from '../Misc/custom-hooks';
+import { RadioInputsWrapper, SearchButtonWrapper, SearchInput } from './Home.styled';
 
 const Home = () => {
   const [input,setInput]=useLastQuery();
@@ -53,18 +55,32 @@ const Home = () => {
 
   return (
     <MainPageLayout>
-      <input type='text'  placeholder='Search for something' onChange={onInputchange} onKeyDown={onKeyDown} value={input}  />
-      <div>
-        <label htmlFor="show">
-          Shows
-          <input id='show' type='radio' checked={isShow} value="shows" onChange={onRadioChange} />
-        </label>
-        <label htmlFor="actor">
-          Actors
-          <input id='actor' type='radio' checked={!isShow} value="people" onChange={onRadioChange} />
-        </label>
-      </div>
+      <SearchInput type='text'  placeholder='Search for something' onChange={onInputchange} onKeyDown={onKeyDown} value={input}  />
+      <RadioInputsWrapper>
+        <div>
+
+          <CustomRadio
+          label ='Shows'
+          id='show'
+           checked={isShow} 
+           value="shows" 
+           onChange={onRadioChange} />
+
+        </div>
+        <div>
+
+        <CustomRadio
+          label ='Actors'
+          id='actor'
+          checked={!isShow}
+          value="people"
+          onChange={onRadioChange} />
+         
+         </div>
+      </RadioInputsWrapper>
+      <SearchButtonWrapper>
       <button type='button' onClick={onsearch} >Search</button>
+      </SearchButtonWrapper>
       {renderResults()}
     </MainPageLayout>
   )
